@@ -5,8 +5,13 @@ const methodOverride = require("method-override")
 const pokemon = require("./models/pokemon.js")
 
 // Mount middleware
+app.use(express.urlencoded({ extended: false}))
 app.use(methodOverride("_method"))
-
+app.use((req, res, next) => {
+    console.log(" I run for all routes");
+    console.log(req.body)
+    next()
+})
 
 // Index
 app.get("/pokemon", (req, res) => {
@@ -16,6 +21,9 @@ app.get("/pokemon", (req, res) => {
 })
 
 // New 
+app.get("/pokemon/new", (req, res) => {
+  res.render("new.ejs")
+})
 
 // Delete
 
@@ -26,11 +34,25 @@ app.delete('/pokemon/:id', (req, res) => {
   //redirect back to index route
 })
 // Update
+app.put("/pokemon/:id", (req, res) => {
+  console.log(req.body)
+  data[req.params.id].name = req.body.name
+  data[req.params.id].type = req.body.type
+  res.redirect("/pokemon")
+})
 
 // Create/Post
+app.post("/pokemon/new", (req, res) => {
+  if (req.body.name !== " ") {
+    req.body.name = true;
+  } else {
+    req.body.name = false 
+  }
+  data.push(req.body)
+  res.redirect("/pokemon") //send the user back to /fruits
+})
 
 // Edit
-
 app.get('/pokemon/:id/edit', (req, res) => {
   res.render(
     "edit.ejs", //render views/edit.ejs
@@ -46,6 +68,7 @@ app.get('/pokemon/:id/edit', (req, res) => {
 
 // Show
 app.get('/pokemon/:id', (req, res) => {
+  console.log(pokemon[req.params.id])
   res.render('show.ejs', { 
     data: pokemon[req.params.id] });
   });

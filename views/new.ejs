@@ -7,6 +7,13 @@
     <title>Create a New Pokemon</title>
 </head>
 <body>
-    
+    <h1>New Fruit Page</h1>
+    <form action="/pokemon" method="POST">
+        id: <input type="number" value="<%=data.id %>" /> <br />
+        name: <input type="text" name="name" value="<%=data.name %>" /> <br />
+        type: <input type="text" name="type" value="<%=data.type %>" /> <br /> 
+        />
+        <br>
+        <input type="submit" value="Create New Pokemon" />
 </body>
 </html>
