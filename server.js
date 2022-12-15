@@ -31,6 +31,19 @@ app.delete('/pokemon/:id', (req, res) => {
 
 // Edit
 
+app.get('/pokemon/:id/edit', (req, res) => {
+  res.render(
+    "edit.ejs", //render views/edit.ejs
+    {
+      //pass in an object that contains
+      data: pokemon[req.params.id],
+       //the fruit object
+      index: req.params.id,
+       //... and its index in the array
+    }
+  )
+})
+
 // Show
 app.get('/pokemon/:id', (req, res) => {
   res.render('show.ejs', { 

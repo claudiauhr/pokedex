@@ -9,12 +9,9 @@
 <body>
     <h1>Pokemon Edit page</h1>
     <form action="/pokemon/<%=index%>?_method=PUT" method="POST">
-        Name: <input type="text" name="name" value="<%=fruit.name %>" /> <br />
-        Color: <input type="text" name="color" value="<%=fruit.color %>" /> <br />
-        Is Ready to Eat: <input type="checkbox" name="readyToEat" 
-        <% if (fruit.readyToEat === true) { %>
-             checked
-        <% } %>      
+        id: <input type="number" value="<%=data.id %>" /> <br />
+        name: <input type="text" name="name" value="<%=data.name %>" /> <br />
+        type: <input type="text" name="type" value="<%=data.type %>" /> <br /> 
         />
         <br>
         <input type="submit" value="Submit Changes" />

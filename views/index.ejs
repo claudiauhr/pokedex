@@ -10,16 +10,18 @@
     <h1>Pokemon Manager</h1>
           <ul>
             <% for(let i = 0; i < data.length; i++) { %>
-              <li><a href="/pokemon/<%= i %>">
-                <%= data[i].name %> 
-                <img src="<%= data[i].img%>"></a>
+              <li><a href="/pokemon/<%= i %>"><%= data[i].name %> <img src="<%= data[i].img%>"></a>
                 <!-- Delete-->
-
                 <form action="/pokemon/<%= i %>?_method=DELETE" method="POST">
                     <input type="submit" value="DELETE" />
                 </form>
+                <!-- Edit -->
+                <a href="/pokemon/<%= i %>/edit">Edit</a>
             </li>
             <% } %>
           </ul>
+          <nav>
+            <a href="/pokemon/new">Create a New Pokemon</a>
+          </nav>
 </body>
 </html>
