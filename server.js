@@ -12,6 +12,7 @@ app.use((req, res, next) => {
     console.log(req.body)
     next()
 })
+app.use(express.static('public'))
 
 // Index
 app.get("/pokemon", (req, res) => {
