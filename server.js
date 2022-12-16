@@ -23,6 +23,7 @@ app.get("/pokemon", (req, res) => {
 // New 
 app.get("/pokemon/new", (req, res) => {
   res.render("new.ejs")
+  
 })
 
 // Delete
@@ -42,13 +43,8 @@ app.put("/pokemon/:id", (req, res) => {
 })
 
 // Create/Post
-app.post("/pokemon/new", (req, res) => {
-  if (req.body.name !== " ") {
-    req.body.name = true;
-  } else {
-    req.body.name = false 
-  }
-  data.push(req.body)
+app.post("/pokemon", (req, res) => {
+  pokemon.push(req.body)
   res.redirect("/pokemon") //send the user back to /fruits
 })
 

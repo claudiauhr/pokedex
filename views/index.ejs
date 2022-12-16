@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon App</title>
+  <%- include('./partials/head.ejs')%>
 </head>
 <body>
     <h1>Pokemon Manager</h1>
           <ul>
             <% for(let i = 0; i < data.length; i++) { %>
-              <li><a href="/pokemon/<%= i %>"><%= data[i].name %> <img src="<%= data[i].img%>"></a>
+              <li >
+                <div class="cards">
+                  <a href="/pokemon/<%= i %>"><%= data[i].name %> <img src="<%= data[i].img%>"></a>
+                </div>
+                
                 <!-- Delete-->
-                <form action="/pokemon/<%= i %>?_method=DELETE" method="POST">
+                <form id="del" action="/pokemon/<%= i %>?_method=DELETE" method="POST">
                     <input type="submit" value="DELETE" />
                 </form>
                 <!-- Edit -->
-                <a href="/pokemon/<%= i %>/edit">Edit</a>
+                <button id="edit">
+                  <a href="/pokemon/<%= i %>/edit">EDIT</a>
+                </button>
             </li>
             <% } %>
           </ul>
