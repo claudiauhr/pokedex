@@ -3,10 +3,12 @@ const express = require("express")
 const app = express()
 const methodOverride = require("method-override")
 const pokemon = require("./models/pokemon.js")
+const PORT = 3001;
 
 // Mount middleware
 app.use(express.urlencoded({ extended: false}))
 app.use(methodOverride("_method"))
+
 app.use((req, res, next) => {
     console.log(" I run for all routes");
     console.log(req.body)
@@ -71,6 +73,6 @@ app.get('/pokemon/:id', (req, res) => {
   });
 
 
-app.listen(3000, () => {
-  console.log("listening")
+app.listen(PORT, () => {
+  console.log("listening ${PORT}")
 })
