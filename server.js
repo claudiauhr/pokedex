@@ -40,27 +40,24 @@ app.delete('/pokemon/:id', (req, res) => {
 // Update
 app.put("/pokemon/:id", (req, res) => {
   console.log(req.body)
-  data[req.params.id].name = req.body.name
-  data[req.params.id].type = req.body.type
+  pokemon[req.params.id].name = req.body.name
+  pokemon[req.params.id].type = req.body.type
   res.redirect("/pokemon")
 })
 
 // Create/Post
 app.post("/pokemon", (req, res) => {
   pokemon.push(req.body)
-  res.redirect("/pokemon") //send the user back to /fruits
+  res.redirect("/pokemon") 
 })
 
 // Edit
 app.get('/pokemon/:id/edit', (req, res) => {
   res.render(
-    "edit.ejs", //render views/edit.ejs
-    {
-      //pass in an object that contains
+    "edit.ejs", {
       data: pokemon[req.params.id],
-       //the fruit object
       index: req.params.id,
-       //... and its index in the array
+
     }
   )
 })

@@ -9,7 +9,7 @@
 <body>
     <h1>Pokemon Edit page</h1>
     <form action="/pokemon/<%=index%>?_method=PUT" method="POST">
-        id: <input type="number" value="<%=data.id %>" /> <br />
+        id: <%=data.id %><br />
         name: <input type="text" name="name" value="<%=data.name %>" /> <br />
         type: <input type="text" name="type" value="<%=data.type %>" /> <br /> 
 
